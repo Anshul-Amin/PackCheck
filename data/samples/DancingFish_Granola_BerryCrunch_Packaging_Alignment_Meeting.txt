@@ -1,0 +1,102 @@
+PACKAGING ARTWORK PRE-PRESS ALIGNMENT & REGULATORY SIGN-OFF MEETING
+Project: DancingFish Granola Berry Crunch (US Market Carton)
+SKU ID: DF-GBC-2026-US
+Date: October 14, 2026, 14:00 - 15:15 EST
+Location: Virtual Conference Room (Teams Recording Transcript)
+
+ATTENDEES:
+- Sarah Jenkins (SJ) - Lead Regulatory Affairs Manager, Global Compliance
+- Marcus Vance (MV) - Brand Director, Breakfast & Cereals Portfolio
+- Elena Rostova (ER) - Senior Packaging Engineer, Pre-Press & Print Quality
+- Dave Chen (DC) - Production Design Lead, External Agency (PixelForge Studios)
+
+TRANSCRIPT:
+
+[00:01:12] Sarah Jenkins (SJ):
+Thanks everyone for jumping on. We are T-minus 10 days from cylinder engraving for the DancingFish Granola Berry Crunch run. Before Elena signs off on the rotogravure plates, we need to run through the artwork dieline proof, verify the approved content sheet, and address any open design questions. Dave, let's start with the front panel design.
+
+[00:03:45] Dave Chen (DC):
+Thanks, Sarah. On the Principal Display Panel (PDP), you’ll notice the product title "BERRY CRUNCH" is positioned slightly to the right of geometric center. It's shifted approximately 76 points (+27mm) toward the right margin. We intentionally shifted this because the photographic cereal bowl illustration occupies the bottom-left quadrant. Centering the typography perfectly on the panel made the text collide with the spoon and berry splash visual.
+
+[00:05:10] Marcus Vance (MV):
+From brand perspective, we fully support that rightward shift. It looks balanced visually even if it's not mathematically centered. Can regulatory approve that?
+
+[00:05:35] Sarah Jenkins (SJ):
+From an FDA standpoint under 21 CFR 101.3, the Statement of Identity must be prominent and in bold type, generally parallel to the base. It does not mandate mathematical pixel-centering on folding cartons as long as legibility and prominence are maintained. So regulatory can grant a design waiver for the horizontal offset. However, Elena, did you check the crease clearance?
+
+[00:06:22] Elena Rostova (ER):
+That's the issue. Shifting "BERRY CRUNCH" to the right pushes the letter 'H' to within 5.2 points (under 2mm) of the right vertical score crease line! During die-cutting and high-speed folding on the cartoner, any text within 8 points of a crease line will crack or fold over. Dave, you must shrink the tracking or scale the font down by 4% to restore at least an 8-point buffer from the dieline fold.
+
+[00:08:15] Dave Chen (DC):
+Understood Elena. I can tighten letter-spacing by -15 kerning units and keep the visual placement while clearing the crease. I will make that revision.
+
+[00:10:40] Marcus Vance (MV):
+Next item: Claims on the front panel. We want to add "Made with 12% Real Wild Honey" on the front banner. Our competitor is claiming 10%, and we want to beat them.
+
+[00:11:05] Sarah Jenkins (SJ):
+Marcus, hold on. What does the written formulation sheet say? I'm opening the Approved Content Sheet (version 2.4, signed off last week). The certified batch formulation lists Wildflower Honey at 8.5% of recipe by total weight. 
+Under FDA and FTC guidelines (and our company compliance policy), any quantitative ingredient claim must reflect the actual formulated percentage. We CANNOT print "12% Real Honey" when the approved written specification certifies 8.5%. The written specification is our legally binding document of record. It strictly overrides marketing aspirations.
+
+[00:12:30] Marcus Vance (MV):
+Okay, got it. If the written spec says 8.5%, then we stick to 8.5%, or we simply say "Made with Real Wildflower Honey" without the 12% figure. Let's do that. Written spec rules.
+
+[00:14:10] Sarah Jenkins (SJ):
+Thank you. Now let's look at the Nutrition Facts panel on the Side Panel (Panel 2). Dave, did you pull the updated nutrition numbers from the final Content Sheet?
+
+[00:15:20] Dave Chen (DC):
+I imported the Nutrition Facts block from our master Illustrator asset library from last season's Berry Crunch test.
+
+[00:15:45] Sarah Jenkins (SJ):
+Wait! That explains it! Look at Cholesterol on the artwork proof:
+Artwork prints: "Cholesterol 45mg 26% DV".
+Marcus, remember in Q2 the formulation was revised: cholesterol was reduced from 80mg down to 45mg. 
+Under FDA 21 CFR 101.9(c)(9), the Daily Value reference for cholesterol is 300mg.
+45mg divided by 300mg is 15.0% DV!
+Your artwork still has the legacy 26% DV printed next to 45mg! If an FDA inspector or retailer compliance audit flags that, it is an automatic Class II misbranding citation. The artwork mathematically contradicts itself.
+
+[00:18:00] Elena Rostova (ER):
+And what about Calories? On the artwork, panel 2 shows "Calories 166", but Fat is 15g, Carbs are 66g, and Protein is 34g. 
+Applying the FDA Atwater specific factors:
+15g fat * 9 kcal/g = 135 kcal
+66g carbs * 4 kcal/g = 264 kcal
+34g protein * 4 kcal/g = 136 kcal
+Total energy is 535 kcal per serving! How could it possibly declare 166 calories?
+
+[00:19:35] Dave Chen (DC):
+Oh wow. In the original prototype template, 166 was the calorie count for a 30g snack pouch, but this carton serving size is 120g. I apologize, that was a copy-paste error from the snack-size dieline.
+
+[00:20:50] Sarah Jenkins (SJ):
+This is exactly why we hold this review. Both the Cholesterol %DV and the declared Calories are critical FAIL items. Written specification sheet version 2.4 has the correct numbers: 535 kcal and 15% DV. The artwork must be updated to match the written document verbatim before we sign off.
+
+[00:23:10] Marcus Vance (MV):
+What about allergens? Does the artwork comply with the FASTER Act?
+
+[00:23:40] Sarah Jenkins (SJ):
+Yes. The Content Sheet specifies: "Contains: Almonds, Oats. May Contain: Sesame, Peanuts." Sesame was signed into law under the FASTER Act as the 9th major food allergen. I reviewed Dave's allergen declaration box on the back panel:
+It clearly reads: "CONTAINS: ALMONDS, OATS. MAY CONTAIN: SESAME, PEANUTS."
+The font size is 8pt bold, exceeding the minimum 6pt requirement. That is a PASS.
+
+[00:26:15] Elena Rostova (ER):
+What about the barcode? Is the UPC-A check digit verified?
+
+[00:26:45] Dave Chen (DC):
+Yes, UPC is 1 20000 00003 6. I verified it through GS1 US check-digit calculator. The check digit 6 is mathematically valid. We positioned it on the bottom panel with 0.25 inch quiet zones on both sides.
+
+[00:28:30] Sarah Jenkins (SJ):
+Perfect. Let's summarize the decision rules and action items before we wrap up:
+
+DOCUMENT HIERARCHY REMINDER:
+Under our regulatory compliance protocol, the order of precedence is strictly:
+1. Official Regulatory Law (FDA 21 CFR, FTC, FALCPA / FASTER Act)
+2. Written Approved Product Specification (Content Sheet XLSX v2.4)
+3. Artwork Graphic Dieline Proof (Illustrator/PDF)
+4. Verbal Meeting Agreements & Design Notes (Advisory only; cannot override 1 or 2)
+
+ACTION ITEMS:
+1. Dave Chen (Agency): Correct Cholesterol %DV from 26% to 15% on Panel 2.
+2. Dave Chen (Agency): Correct Calories from 166 kcal to 535 kcal to match Atwater macronutrient sum.
+3. Dave Chen (Agency): Adjust kerning on "BERRY CRUNCH" title to ensure >8pt safety buffer from vertical score crease line.
+4. Marcus Vance (Brand): Confirm honey claim wording uses "Made with Real Wildflower Honey" without the unverified 12% claim, matching the written 8.5% formulation spec.
+5. Elena Rostova (Packaging): Re-run pre-press dieline verification once revised PDF rev-C is uploaded.
+
+Meeting adjourned at 15:15 EST.

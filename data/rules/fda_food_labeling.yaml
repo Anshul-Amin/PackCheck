@@ -1,0 +1,193 @@
+# FDA Food Labeling Regulations & Guidelines (Title 21 CFR & FALCPA)
+# Verified against FDA Food Labeling Guide: https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-food-labeling-guide
+# eCFR Reference: https://www.ecfr.gov/current/title-21/chapter-I/subchapter-B/part-101
+
+rules:
+  - id: "FDA-NUT-001"
+    title: "Nutrition Facts Title and Format"
+    source: "21 CFR 101.9(d)(2)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(d)(2)"
+    quote_or_paraphrase: "The nutrition information shall be set off in a box headed by the title 'Nutrition Facts'."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-002"
+    title: "Required Nutrients Declaration"
+    source: "21 CFR 101.9(c)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)"
+    quote_or_paraphrase: "Nutrition facts must declare calories, total fat, saturated fat, trans fat, cholesterol, sodium, total carbohydrate, dietary fiber, total sugars, added sugars, protein, vitamin D, calcium, iron, and potassium."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-003"
+    title: "Trans Fat Cannot Exceed Total Fat"
+    source: "21 CFR 101.9(c)(2)(ii)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(2)(ii)"
+    quote_or_paraphrase: "Trans fat is a sub-component of total fat and cannot exceed total fat in grams."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-004"
+    title: "Saturated and Trans Fat Sum Constraint"
+    source: "21 CFR 101.9(c)(2)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(2)"
+    quote_or_paraphrase: "The sum of declared saturated fat and trans fat cannot exceed total fat."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-005"
+    title: "Total Sugars Cannot Exceed Total Carbohydrates"
+    source: "21 CFR 101.9(c)(6)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(6)"
+    quote_or_paraphrase: "Total sugars and dietary fiber are sub-components of total carbohydrate; total sugars cannot exceed total carbohydrate."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-006"
+    title: "Added Sugars Cannot Exceed Total Sugars"
+    source: "21 CFR 101.9(c)(6)(iii)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(6)(iii)"
+    quote_or_paraphrase: "Added sugars is a subset of total sugars and cannot exceed declared total sugars."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-007"
+    title: "Percent Daily Value (%DV) Calculation"
+    source: "21 CFR 101.9(c)(9)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(9)"
+    quote_or_paraphrase: "Percent Daily Values must be calculated based on FDA reference daily values for a 2,000 calorie diet."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-008"
+    title: "Calorie and Macronutrient Consistency (Atwater Check)"
+    source: "21 CFR 101.9(c)(1)(i)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(c)(1)(i)"
+    quote_or_paraphrase: "Declared calories must reasonably correlate with calories derived from 4 kcal/g protein, 4 kcal/g carbohydrate, and 9 kcal/g fat."
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NUT-009"
+    title: "Serving and Net Quantity Consistency"
+    source: "21 CFR 101.9(b)(8)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(b)(8)"
+    quote_or_paraphrase: "Number of servings multiplied by the serving size weight must approximately equal the declared total package net quantity."
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["nutrition", "net_quantity"]
+
+  - id: "FDA-NUT-010"
+    title: "Nutrition Facts Footnote Statement"
+    source: "21 CFR 101.9(d)(9)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.9#p-101.9(d)(9)"
+    quote_or_paraphrase: "The panel must carry the footnote: 'The % Daily Value (DV) tells you how much a nutrient in a serving of food contributes to a daily diet. 2,000 calories a day is used for general nutrition advice.'"
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["nutrition"]
+
+  - id: "FDA-NET-001"
+    title: "Dual Unit Net Quantity of Contents"
+    source: "21 CFR 101.7 & FPLA 15 U.S.C. 1453"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.7"
+    quote_or_paraphrase: "The net quantity declaration on food packages sold in the United States must state the net quantity in both US customary units (ounces/pounds) and metric units (grams/kilograms)."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["net_quantity", "front_panel"]
+
+  - id: "FDA-ING-001"
+    title: "Ingredient List Heading and Presence"
+    source: "21 CFR 101.4(a)(1)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.4#p-101.4(a)(1)"
+    quote_or_paraphrase: "Ingredients must be declared by their common or usual name in descending order of predominance by weight, preceded by 'Ingredients:'."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["ingredients"]
+
+  - id: "FDA-ING-002"
+    title: "No Duplicated Ingredients in List"
+    source: "21 CFR 101.4"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.4"
+    quote_or_paraphrase: "A single ingredient should not be declared multiple times in the same ingredient list as distinct items without composite naming."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["ingredients"]
+
+  - id: "FDA-ALL-001"
+    title: "Major Food Allergen Declaration"
+    source: "FALCPA 21 U.S.C. 343(w) & FASTER Act"
+    source_url: "https://www.fda.gov/food/food-allergensgluten-free-guidance-documents-regulatory-information/food-allergen-labeling-and-consumer-protection-act-2004-falcpa"
+    quote_or_paraphrase: "Major food allergens used as ingredients (including almonds, pecans, walnuts, and sesame) must be declared either parenthetically in the ingredient list or in a 'Contains:' statement immediately following or adjacent to the ingredient list."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["allergens", "ingredients"]
+
+  - id: "FDA-ALL-002"
+    title: "Advisory Allergen Statements Cannot Substitute Required Declarations"
+    source: "FDA Food Allergen Advisory Guidance"
+    source_url: "https://www.fda.gov/food/food-labeling-nutrition/food-allergens"
+    quote_or_paraphrase: "Advisory statements such as 'May Contain' are voluntary cross-contact statements and cannot be used in lieu of required allergen declarations for ingredients actually present in the formulation."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["allergens", "ingredients"]
+
+  - id: "FDA-CLM-001"
+    title: "No Added Sugar Claim vs Sugar Ingredients"
+    source: "21 CFR 101.60(c)(2)"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.60#p-101.60(c)(2)"
+    quote_or_paraphrase: "The claim 'No Added Sugar' may only be made if no sugar or ingredient containing sugar that functions as a sweetener (e.g. honey, coconut sugar, cane sugar, syrups) is added during processing."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["claims", "ingredients", "nutrition"]
+
+  - id: "FDA-CLM-002"
+    title: "Vegan Claim Consistency with Ingredients"
+    source: "21 CFR 101.18 & Standard Consumer Practice"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.18"
+    quote_or_paraphrase: "A food labeled as 'Certified Vegan' or 'Vegan' must not contain animal-derived ingredients such as honey, dairy, egg, gelatine, or carmine."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["claims", "ingredients"]
+
+  - id: "FDA-CLM-003"
+    title: "Organic Certification Documentation"
+    source: "USDA NOP 7 CFR Part 205"
+    source_url: "https://www.ams.usda.gov/rules-regulations/organic"
+    quote_or_paraphrase: "Products claiming 'USDA Organic' or 'Certified Organic' must be certified by an accredited certifying agent and identify the certifying agent on the information panel."
+    check_type: "semantic"
+    severity: "major"
+    applies_to: ["claims"]
+
+  - id: "FDA-CLM-004"
+    title: "Non-GMO Claim Verification"
+    source: "FDA Guidance for Industry on Voluntary Labeling Indicating Whether Foods Have or Have Not Been Derived from Genetically Engineered Plants"
+    source_url: "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-voluntary-labeling-indicating-whether-foods-have-or-have-not-been-derived"
+    quote_or_paraphrase: "Claims such as 'GMO Free' or 'Non-GMO' must not be misleading and should be supported by documentation of supply chain verification."
+    check_type: "semantic"
+    severity: "advisory"
+    applies_to: ["claims"]
+
+  - id: "FDA-MAN-001"
+    title: "Name and Place of Business of Manufacturer, Packer, or Distributor"
+    source: "21 CFR 101.5"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.5"
+    quote_or_paraphrase: "The label of a food package shall specify conspicuously the name and place of business of the manufacturer, packer, or distributor, including street address, city, state, and ZIP code (unless listed in a current telephone or city directory)."
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["manufacturer"]
+
+  - id: "FDA-SOI-001"
+    title: "Statement of Identity on Principal Display Panel"
+    source: "21 CFR 101.3"
+    source_url: "https://www.ecfr.gov/current/title-21/section-101.3"
+    quote_or_paraphrase: "The principal display panel of a food packaging must bear the statement of identity (common or usual name of the food) prominently in bold type."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["front_panel", "statement_of_identity"]

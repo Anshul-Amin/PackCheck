@@ -1,0 +1,39 @@
+[project]
+name = "packcheck"
+version = "0.1.0"
+description = "AI-powered packaging-artwork compliance checker for Esko AIForge"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "PyMuPDF>=1.25.0",
+    "openpyxl>=3.1.2",
+    "pydantic>=2.10.0",
+    "google-genai>=1.0.0",
+    "streamlit>=1.40.0",
+    "Pillow>=10.0.0",
+    "rank-bm25>=0.2.2",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "langgraph>=1.2.0",
+    "langchain>=1.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.9.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"
+pythonpath = ["src"]
