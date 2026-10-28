@@ -6,11 +6,13 @@ from pathlib import Path
 
 from src.packcheck.checks.deterministic.claims import ClaimsCheck
 from src.packcheck.checks.deterministic.consistency import ConsistencyCheck
+from src.packcheck.checks.deterministic.fssai_check import FSSAICheck
 from src.packcheck.checks.deterministic.nutrition_math import NutritionMathCheck
 from src.packcheck.checks.deterministic.required_elements import RequiredElementsCheck
 from src.packcheck.checks.semantic.rule_check import SemanticRuleCheck
 from src.packcheck.checks.semantic.vision_verify import VisionVerifier
 from src.packcheck.checks.visual.design_language import DesignLanguageCheck
+from src.packcheck.config import RULES_DIR
 from src.packcheck.db.storage import find_dismissal_precedents, get_active_dismissals
 from src.packcheck.ingest.artwork import ingest_artwork_pdf
 from src.packcheck.ingest.contentsheet import ingest_content_sheet
@@ -39,6 +41,7 @@ def run_compliance_check(
     enable_semantic: bool = True,
     enable_vision: bool = True,
     gemini_key: str | None = None,
+    jurisdiction: str = "US_FDA",
 ) -> tuple[Report, ArtworkDoc, ApprovedData]:
     """Execute end-to-end compliance check and produce validated Report."""
     if progress_callback:
@@ -54,9 +57,16 @@ def run_compliance_check(
     # 2. Ingest Content Sheet
     approved = ingest_content_sheet(content_sheet_path)
 
-    # 3. Load Rules
+    # 3. Load Rules based on selected regulatory jurisdiction
     if rules is None:
-        rules = load_yaml_rules()
+        if jurisdiction == "INDIA_FSSAI":
+            rules = load_yaml_rules(RULES_DIR / "fssai_food_labeling.yaml")
+        elif jurisdiction == "DUAL_FDA_FSSAI":
+            rules = load_yaml_rules(RULES_DIR / "fda_food_labeling.yaml")
+            fssai_r = load_yaml_rules(RULES_DIR / "fssai_food_labeling.yaml")
+            rules.extend(fssai_r)
+        else:
+            rules = load_yaml_rules(RULES_DIR / "fda_food_labeling.yaml")
 
     if progress_callback:
         progress_callback(0.40, "Executing deterministic regulatory checks...")
@@ -70,6 +80,8 @@ def run_compliance_check(
         RequiredElementsCheck(),
         DesignLanguageCheck(llm_client=GeminiClient(api_key=gemini_key)),
     ]
+    if jurisdiction in ("INDIA_FSSAI", "DUAL_FDA_FSSAI"):
+        deterministic_checks.append(FSSAICheck())
 
     for chk in deterministic_checks:
         findings = chk.run(artwork, approved, rules)

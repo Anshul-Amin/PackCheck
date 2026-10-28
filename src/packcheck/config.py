@@ -5,14 +5,14 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-# Load .env if present
-load_dotenv()
-
 # Base directories
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = BASE_DIR / "data"
 SAMPLES_DIR = DATA_DIR / "samples"
 RULES_DIR = DATA_DIR / "rules"
+
+# Load .env explicitly from project root if present
+load_dotenv(BASE_DIR / ".env", override=True)
 CACHE_DIR = Path(os.getenv("LLM_CACHE_DIR", str(BASE_DIR / ".cache" / "llm")))
 
 # LLM Configuration

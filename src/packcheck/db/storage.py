@@ -51,6 +51,21 @@ def init_db() -> None:
     )
     """)
 
+    # 3. Physical Review Parameters Table
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS physical_review_parameters (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        artwork_filename TEXT NOT NULL,
+        parameter_name TEXT NOT NULL,
+        category TEXT DEFAULT 'Physical Review',
+        rule_reference TEXT,
+        is_verified INTEGER DEFAULT 0,
+        inspector_name TEXT NOT NULL,
+        notes TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
     conn.commit()
     conn.close()
 
@@ -313,3 +328,100 @@ def record_operator_signoff(
         f"Organic/Kosher Affidavits={certifications_verified}. Notes: {notes}"
     )
     log_audit_event(artwork_filename, "OPERATOR_PRESSROOM_SIGNOFF", details)
+
+
+def save_physical_parameter(
+    artwork_filename: str,
+    parameter_name: str,
+    category: str = "Physical Review",
+    rule_reference: str = "",
+    is_verified: bool = True,
+    inspector_name: str = "Operator",
+    notes: str = "",
+) -> int:
+    """Save an AI-pulled or user-added physical inspection parameter and log it in the audit trail."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        """
+        INSERT INTO physical_review_parameters
+        (artwork_filename, parameter_name, category, rule_reference, is_verified, inspector_name, notes, timestamp)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        (
+            artwork_filename,
+            parameter_name,
+            category,
+            rule_reference,
+            1 if is_verified else 0,
+            inspector_name,
+            notes,
+            datetime.now().isoformat(),
+        ),
+    )
+    param_id = cursor.lastrowid or 0
+    conn.commit()
+    conn.close()
+
+    status_str = "VERIFIED" if is_verified else "FLAGGED"
+    log_audit_event(
+        artwork_filename,
+        "PHYSICAL_PARAMETER_LOGGED",
+        f"Parameter '{parameter_name}' ({rule_reference or 'Manual Check'}) marked {status_str} by {inspector_name}. Notes: {notes}",
+    )
+    return param_id
+
+
+def get_physical_parameters(artwork_filename: str | None = None) -> list[dict[str, Any]]:
+    """Retrieve saved physical review parameters, optionally filtered by artwork."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    if artwork_filename:
+        cursor.execute(
+            """
+            SELECT id, artwork_filename, parameter_name, category, rule_reference, is_verified, inspector_name, notes, timestamp
+            FROM physical_review_parameters
+            WHERE artwork_filename = ?
+            ORDER BY id DESC
+            """,
+            (artwork_filename,),
+        )
+    else:
+        cursor.execute(
+            """
+            SELECT id, artwork_filename, parameter_name, category, rule_reference, is_verified, inspector_name, notes, timestamp
+            FROM physical_review_parameters
+            ORDER BY id DESC
+            """
+        )
+
+    rows = cursor.fetchall()
+    conn.close()
+    return [
+        {
+            "id": r["id"],
+            "artwork_filename": r["artwork_filename"],
+            "parameter_name": r["parameter_name"],
+            "category": r["category"],
+            "rule_reference": r["rule_reference"],
+            "is_verified": bool(r["is_verified"]),
+            "inspector_name": r["inspector_name"],
+            "notes": r["notes"],
+            "timestamp": r["timestamp"],
+        }
+        for r in rows
+    ]
+
+
+def delete_physical_parameter(param_id: int) -> None:
+    """Delete a custom physical inspection parameter."""
+    init_db()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM physical_review_parameters WHERE id = ?", (param_id,))
+    conn.commit()
+    conn.close()

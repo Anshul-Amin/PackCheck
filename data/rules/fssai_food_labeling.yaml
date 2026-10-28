@@ -1,0 +1,76 @@
+# Food Safety and Standards Authority of India (FSSAI)
+# Food Safety and Standards (Labelling and Display) Regulations, 2020
+# Reference: https://www.fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Labelling_Display_18_11_2020.pdf
+
+rules:
+  - id: "FSSAI-LIC-001"
+    title: "FSSAI Logo and 14-Digit License Number"
+    source: "FSSAI Labelling Regulations 2020, Chapter 2, Clause 5(4)"
+    source_url: "https://www.fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Labelling_Display_18_11_2020.pdf"
+    quote_or_paraphrase: "The FSSAI logo and 14-digit license number of the manufacturer/packer/marketer shall be prominently displayed on the label."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["license", "identity"]
+
+  - id: "FSSAI-VEG-001"
+    title: "Vegetarian / Non-Vegetarian Logo Declaration"
+    source: "FSSAI Labelling Regulations 2020, Chapter 2, Clause 5(5)"
+    source_url: "https://www.fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Labelling_Display_18_11_2020.pdf"
+    quote_or_paraphrase: "Every package of vegetarian food shall bear a green circle inside a green square; non-vegetarian shall bear a brown triangle inside a brown square on the principal display panel."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["symbol", "identity"]
+
+  - id: "FSSAI-DATE-001"
+    title: "Date of Manufacture / Packaging and Best Before / Expiry"
+    source: "FSSAI Labelling Regulations 2020, Chapter 2, Clause 5(10)"
+    source_url: "https://www.fssai.gov.in/upload/uploadfiles/files/Gazette_Notification_Labelling_Display_18_11_2020.pdf"
+    quote_or_paraphrase: "The date of manufacture or packaging, and expiry date or best before date shall be declared on the label."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["dates", "shelf_life"]
+
+  - id: "FSSAI-MRP-001"
+    title: "Maximum Retail Price (MRP) and Consumer Care Details"
+    source: "FSSAI Labelling Regulations 2020, Clause 5(12) & Legal Metrology Rules"
+    source_url: "https://www.fssai.gov.in"
+    quote_or_paraphrase: "MRP inclusive of all taxes, along with consumer care cell contact name, address, telephone, and email must be displayed."
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["consumer_info", "pricing"]
+
+  - id: "FSSAI-NUT-001"
+    title: "Mandatory Nutritional Declaration per 100g and per Serving"
+    source: "FSSAI Labelling Regulations 2020, Clause 5(3)"
+    source_url: "https://www.fssai.gov.in"
+    quote_or_paraphrase: "Nutritional information shall state energy (kcal), protein (g), carbohydrate (g), total sugars (g), added sugars (g), total fat (g), saturated fat (g), trans fat (g), and sodium (mg) per 100g or per serve."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition"]
+
+  - id: "FSSAI-NUT-002"
+    title: "Trans Fat 2% Cap Rule"
+    source: "Food Safety and Standards (Food Products Standards and Food Additives) Regulations"
+    source_url: "https://www.fssai.gov.in"
+    quote_or_paraphrase: "Trans fat content in foods shall not exceed 2% by weight of total fat."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["nutrition", "limits"]
+
+  - id: "FSSAI-ALG-001"
+    title: "Mandatory Allergen Declaration (FSSAI 8 Major Classes)"
+    source: "FSSAI Labelling Regulations 2020, Clause 5(14)"
+    source_url: "https://www.fssai.gov.in"
+    quote_or_paraphrase: "Foods containing gluten/cereals, crustaceans, eggs, fish, peanuts, soybeans, milk, or tree nuts must provide a separate allergen statement."
+    check_type: "deterministic"
+    severity: "critical"
+    applies_to: ["allergens"]
+
+  - id: "FSSAI-QTY-001"
+    title: "Net Quantity in Standard Metric Units"
+    source: "Legal Metrology (Packaged Commodities) Rules & FSSAI Clause 5(2)"
+    source_url: "https://www.fssai.gov.in"
+    quote_or_paraphrase: "Net quantity must be declared in metric units (g, kg, ml, l) with appropriate font height relative to package area."
+    check_type: "deterministic"
+    severity: "major"
+    applies_to: ["quantity"]
