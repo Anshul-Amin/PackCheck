@@ -38,6 +38,7 @@ htmlcov/
 
 # LLM cache (keep demo pre-warmed cache if needed, ignore live runtime cache)
 .cache/llm/live_*
+**/.cache/
 
 # Streamlit
 .streamlit/
