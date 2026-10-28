@@ -1,8 +1,0 @@
-{
-  "verdict": "NEEDS_REVIEW",
-  "confidence": 0.85,
-  "quoted_artwork_text": "USDA Organic",
-  "quoted_rule_text": "Products claiming 'USDA Organic' must identify the certifying agent on the information panel.",
-  "reasoning": "Artwork displays the USDA Organic seal, but the name of the certifying agent (e.g. 'Certified organic by QAI') is not legible on the informational dieline panel.",
-  "needs_human_because": "Inspect information panel to confirm accredited organic certifier name is present before print release."
-}

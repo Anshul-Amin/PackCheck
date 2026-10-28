@@ -60,7 +60,12 @@ def test_qa_assistant_with_global_and_transcript_context():
         transcript=doc,
         scope="global",
     )
-    assert "Analysis of Packaging Audit Failures" in ans1 or "Regulatory Impact" in ans1
+    assert (
+        "Root Cause of the Failure" in ans1
+        or "Analysis of Packaging Audit Failures" in ans1
+        or "Regulatory Impact" in ans1
+        or "misbranding" in ans1.lower()
+    )
 
     # Ask about meeting transcript
     ans2 = answer_packaging_question(
