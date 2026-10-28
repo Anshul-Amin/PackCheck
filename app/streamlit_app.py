@@ -1180,18 +1180,6 @@ if st.session_state.report and st.session_state.artwork:
                             unsafe_allow_html=True,
                         )
 
-                    # Historical precedents banner if retrieved from SQLite
-                    prec = finding.metadata.get("historical_precedents")
-                    if prec and not finding.dismissed:
-                        st.markdown(
-                            f"<div class='precedent-box'>"
-                            f"💡 <strong>Historical Precedent Detected:</strong> In earlier packaging revision "
-                            f"<code>{prec[0]['artwork_filename']}</code>, reviewer approved: "
-                            f'<em>"{prec[0]["reason"]}"</em>'
-                            f"</div>",
-                            unsafe_allow_html=True,
-                        )
-
         # Right Detail Column
         with col_detail:
             st.markdown("#### Finding Detail & Human Review Action")
